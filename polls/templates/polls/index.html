@@ -1,0 +1,19 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<div class="d-flex p-5 flex-column justify-content-center align-items-center">
+    <h1>Preguntas por Mackgreenkill :)</h1>
+    <div class="">
+        {% if latest_question_list %}
+            <ul class="d-flex p-5 justify-content-center">
+            {% for question in latest_question_list %}
+                {% comment %} <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> {% endcomment %}
+                <li class="m-4"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+    </div>
+</div>
